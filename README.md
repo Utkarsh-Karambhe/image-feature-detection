@@ -174,8 +174,8 @@ When increasing the Hessian threshold to 800:
 ![SURF Higher Threshold](results/surf_high.png)
 
 **Parameter Experimentation:**
-- Increasing the Hessian threshold to 800 reduced the number of keypoints to 375 and 412 respectively.
-- This resulted in 156 good matches - fewer than before but more focused on stronger feature points.
+- Increasing the Hessian threshold to 800 reduced the number of keypoints to 1500 and 1500 respectively.
+- This resulted in 28 good matches - fewer than before but more focused on stronger feature points.
 - The processing time was reduced by approximately 40% with the higher threshold.
 - I observed that SURF performed better than SIFT for images with significant scale differences, but slightly worse for images with extreme viewpoint changes.
 - Experimenting with the extended flag (setting it to True) produced 128-dimensional descriptors instead of 64, which improved matching accuracy but increased computation time by about 25%.
