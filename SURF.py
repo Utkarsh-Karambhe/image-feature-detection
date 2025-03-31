@@ -51,7 +51,7 @@ plt.savefig('results/surf_default.png', bbox_inches='tight')
 plt.show()
 
 # More features
-result_img_high, kp1_count_high, kp2_count_high, good_matches_count_high = orb_feature_matching(img1_path, img2_path, max_features=1000)
+result_img_high, kp1_count_high, kp2_count_high, good_matches_count_high = surf_feature_matching(img1_path, img2_path, max_features=1000)
 
 plt.figure(figsize=(15, 10))
 plt.imshow(cv2.cvtColor(result_img_high, cv2.COLOR_BGR2RGB))
