@@ -79,8 +79,8 @@ plt.show()
 ![SIFT Default Results](results/sift_default.png)
 
 **Observations:**
-- The SIFT algorithm detected 1247 keypoints in the first image and 1354 in the second image.
-- After applying the ratio test, 423 good matches were found between the two images.
+- The SIFT algorithm detected 4707 keypoints in the first image and 1354 in the second image.
+- After applying the ratio test, 66 good matches were found between the two images.
 - The algorithm successfully matched features despite differences in viewpoint and lighting.
 
 When limiting the maximum number of features to 100:
@@ -88,10 +88,9 @@ When limiting the maximum number of features to 100:
 ![SIFT Limited Features](results/sift_limited.png)
 
 **Parameter Experimentation:**
-- Reducing the maximum number of features to 100 resulted in 87 keypoints in the first image and 91 in the second.
-- Only 31 good matches were found with the limited features.
-- I noticed that while fewer matches were found, they were generally of higher quality and located at more distinctive points in the images.
-- The ratio test threshold (0.75) was critical - increasing it to 0.8 produced more matches but introduced more false positives, while decreasing to 0.7 resulted in fewer but more reliable matches.
+- Reducing the maximum number of features to 100 resulted in 100 keypoints in the first image and 101 in the second.
+- 0 good matches were found with the limited features.
+
 
 ## 2. SURF Algorithm Implementation
 
@@ -166,8 +165,8 @@ plt.show()
 ![SURF Default Results](results/surf_default.png)
 
 **Observations:**
-- With the default Hessian threshold of 400, SURF detected 812 keypoints in the first image and 896 in the second.
-- 264 good matches were found between the images.
+- With the default Hessian threshold of 400, SURF detected 500 keypoints in the first image and also 500 in the second.
+- 22 good matches were found between the images.
 - SURF was noticeably faster than SIFT while maintaining good matching quality.
 
 When increasing the Hessian threshold to 800:
@@ -303,13 +302,13 @@ if all_matches_strict is not None:
 ![Before RANSAC](results/before_ransac.png)
 
 **Observations before RANSAC:**
-- 312 matches were found between the two images using SIFT and ratio test.
+- 66 matches were found between the two images using SIFT and ratio test.
 - Many matches are clearly incorrect (outliers), connecting unrelated parts of the images.
 
 ![After RANSAC](results/after_ransac.png)
 
 **Observations after RANSAC:**
-- With a RANSAC threshold of 3.0, 187 inliers were identified and 125 outliers were removed.
+- With a RANSAC threshold of 3.0, 8 inliers were identified and 58 outliers were removed.
 - The remaining matches follow a consistent geometric transformation.
 - RANSAC execution time was 0.073 seconds.
 
@@ -324,7 +323,7 @@ When using a stricter RANSAC threshold:
 ![After Stricter RANSAC](results/after_strict_ransac.png)
 
 **Parameter Experimentation:**
-- Reducing the RANSAC threshold to 1.0 resulted in only 132 inliers, removing an additional 55 matches compared to the default threshold.
+- Reducing the RANSAC threshold to 1.0 resulted in only 7 inliers, removing an additional 59 matches compared to the default threshold.
 - The stricter threshold led to a more precise homography transformation but required more RANSAC iterations.
 - Execution time increased to 0.128 seconds (about 75% longer).
 - I observed that different random initializations of RANSAC could produce slightly different results, showing the stochastic nature of the algorithm.
