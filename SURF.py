@@ -59,3 +59,13 @@ plt.title(f'SURF Matching (More Features): {good_matches_count_high} matches out
 plt.axis('off')
 plt.savefig('results/surf_more_features.png', bbox_inches='tight')
 plt.show()
+
+# **Higher Threshold SURF Output**
+result_img_threshold, kp1_count_threshold, kp2_count_threshold, good_matches_count_threshold = surf_feature_matching(img1_path, img2_path, max_features=1500)
+
+plt.figure(figsize=(15, 10))
+plt.imshow(cv2.cvtColor(result_img_threshold, cv2.COLOR_BGR2RGB))
+plt.title(f'SURF Matching (Higher Threshold): {good_matches_count_threshold} matches out of {kp1_count_threshold}/{kp2_count_threshold} keypoints')
+plt.axis('off')
+plt.savefig('results/surf_high.png', bbox_inches='tight')
+plt.show()
